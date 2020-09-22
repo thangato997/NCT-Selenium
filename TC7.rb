@@ -11,18 +11,10 @@ driver.find_element(:css, '#last-name').send_keys('Coaching')
 driver.find_element(:css, '#job-title').send_keys('QA')
 # Check the radio button is checked or not
 radio_button = driver.find_element(:css, '#radio-button-2')
-if (radio_button.selected?)
-    pass
-else
-    radio_button.click
-end
+radio_button.click unless radio_button.selected?
 # Check the checkbox is checked or not
 checkbox = driver.find_element(:css, '#checkbox-1')
-if (checkbox.selected?)
-    pass
-else
-    checkbox.click
-end
+checkbox.click unless checkbox.selected?
 # Clicking an option in DropDown 
 text = driver.find_element(:xpath, "//option[contains(text(),'2-4')]").text # Get text of element
 select_list = driver.find_element(:xpath, "//select[@id='select-menu']") # Get dropdown list
