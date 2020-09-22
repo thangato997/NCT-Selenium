@@ -23,5 +23,4 @@ dropdown.select_by(:text, text) # Select value by text from dropdown list
 
 driver.find_element(:css, '#datepicker').send_keys('27/10/2025')
 driver.find_element(:xpath, "//a[@class='btn btn-lg btn-primary']").click
-sleep 2
 driver.close
