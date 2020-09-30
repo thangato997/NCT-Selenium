@@ -6,7 +6,7 @@ Given("Navigate to the login page") do
     end
 end
   
-When("User enter valid {string} and {string}") do |string, string2|
+When("User enter {string} and {string}") do |string, string2|
     $driver.find_element(css: "#username").send_keys string
     $driver.find_element(css: "#password").send_keys string2
     $driver.find_element(css: ".fa.fa-2x.fa-sign-in").click
@@ -17,12 +17,12 @@ end
 #     $driver.close
 # end
 
-When("User enter invalid {string} and {string}") do |string, string2|
-    # wait()
-    $driver.find_element(css: "#username").send_keys string
-    $driver.find_element(css: "#password").send_keys string2
-    $driver.find_element(css: ".fa.fa-2x.fa-sign-in").click
-end
+# When("User enter invalid {string} and {string}") do |string, string2|
+#     # wait()
+#     $driver.find_element(css: "#username").send_keys string
+#     $driver.find_element(css: "#password").send_keys string2
+#     $driver.find_element(css: ".fa.fa-2x.fa-sign-in").click
+# end
 
 def exit_browser()
     # if $n > 0
@@ -43,5 +43,5 @@ end
 Then("User verify the message {string}") do |string|
     text = $driver.find_element(css: "#flash").text
     expect(text).to include(string)
-    exit_browser()
+exit_browser()
 end
