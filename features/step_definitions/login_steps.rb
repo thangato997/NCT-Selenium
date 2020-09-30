@@ -43,5 +43,5 @@ end
 Then("User verify the message {string}") do |string|
     text = $driver.find_element(css: "#flash").text
     expect(text).to include(string)
-exit_browser()
+    exit_browser()
 end
