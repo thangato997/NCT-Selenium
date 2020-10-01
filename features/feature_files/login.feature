@@ -5,10 +5,12 @@ Feature: Login
 
     Background:
     Given Navigate to the login page
+    
     @valid
     Scenario: Valid login  
     When User enter "tomsmith" and "SuperSecretPassword!"
     Then User verify the message "You logged into a secure area!"
+
     @invalid
     Scenario Outline: Invalid login
     When User enter "<username>" and "<password>"

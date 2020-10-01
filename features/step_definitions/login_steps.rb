@@ -1,31 +1,8 @@
-$n = 0
-Given("Navigate to the login page") do
-    if $n < 2
-    $driver = Selenium::WebDriver.for :firefox
-    $driver.navigate.to 'http://the-internet.herokuapp.com/login'
-    end
-end
-  
-When("User enter {string} and {string}") do |string, string2|
-    $driver.find_element(css: "#username").send_keys string
-    $driver.find_element(css: "#password").send_keys string2
-    $driver.find_element(css: ".fa.fa-2x.fa-sign-in").click
-end
-  
-# Then("User verify that login was successful with message {string}") do |string|
-#     expect($driver.find_element(css: "#flash").text).to include(string)
-#     $driver.close
-# end
-
-# When("User enter invalid {string} and {string}") do |string, string2|
-#     # wait()
-#     $driver.find_element(css: "#username").send_keys string
-#     $driver.find_element(css: "#password").send_keys string2
-#     $driver.find_element(css: ".fa.fa-2x.fa-sign-in").click
-# end
-
+# Khởi tạo biến n để làm điều kiện
+$n = 0 
+# Hàm để close or refresh trang
 def exit_browser()
-    # if $n > 0
+    # Điều kiện để đóng hoặc làm mới trang web 
     if $n > 0 && $n < 3
         $driver.navigate.refresh
         $n += 1
@@ -35,10 +12,18 @@ def exit_browser()
     end
 end
 
-# def wait()
-#     $wait = Selenium::WebDriver::Wait.new(timeout: 10)
-#     $wait.until{$driver.find_element(xpath: "//h2[contains(text(),'Login Page')]").displayed?}
-# end
+Given("Navigate to the login page") do
+    if $n < 2 # Điều kiện để mở trình duyệt và đi tới trang web
+    $driver = Selenium::WebDriver.for :chrome
+    $driver.navigate.to 'http://the-internet.herokuapp.com/login'
+    end
+end
+  
+When("User enter {string} and {string}") do |string, string2|
+    $driver.find_element(css: "#username").send_keys string
+    $driver.find_element(css: "#password").send_keys string2
+    $driver.find_element(css: ".fa.fa-2x.fa-sign-in").click
+end
 
 Then("User verify the message {string}") do |string|
     text = $driver.find_element(css: "#flash").text
