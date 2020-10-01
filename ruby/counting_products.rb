@@ -22,6 +22,6 @@ describe "Count Products that were displayed" do
         elements = @driver.find_elements(css: ".search-a-product-item")
         # get total of products by get size of value elements 
         count = elements.size
-        puts ("Có " + count.to_s + " sản phầm được hiển thị")
+        puts count.to_s + " products are counted"
     end
 end
