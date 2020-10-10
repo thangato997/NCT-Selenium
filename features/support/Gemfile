@@ -1,0 +1,3 @@
+source 'http://rubygems.org'
+gem 'report_builder'
+gem 'itms_automation'

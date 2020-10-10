@@ -1,5 +1,5 @@
-require 'selenium-webdriver'
+require "selenium_webdriver"
 
 $driver = Selenium::WebDriver.for :firefox
-$driver.get 'https://www.google.com/'
+$driver.get "https://www.google.com/"
 $driver.close

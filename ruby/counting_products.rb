@@ -5,7 +5,19 @@ $products = 52
 
 describe "Count Products that were displayed" do
     before(:all) do
-        @driver = Selenium::WebDriver.for :chrome
+        # @driver = Selenium::WebDriver.for :chrome
+        caps = Selenium::WebDriver::Remote::Capabilities.firefox
+        # client = Selenium::WebDriver::Remote::Http::Default.new
+        # client.read_timeout = 120
+        # client.open_timeout = 120
+        caps[:platform] = :win # you can also use :any, :win, or :x
+    
+        @driver = Selenium::WebDriver.for(
+        :remote,
+        url: 'http://localhost:4444/wd/hub',
+        desired_capabilities: caps 
+        # :http_client => client
+        )
     end
 
     before(:each) do
