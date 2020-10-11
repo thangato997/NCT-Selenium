@@ -48,7 +48,7 @@ When("user search and buy the products") do
   $driver.manage.timeouts.implicit_wait = 10
   # verify title của sản phâm khi tìm kiếm và sau khi thêm vào giỏ hàng, nếu sai testcase sẽ dừng lại
   # begin
-  expect($driver.find_element(css: "h1.title").text).to include("sdkasdhauksda")
+  expect($driver.find_element(css: "h1.title").text).to include($product_title)
   # rescue => exception
   #   puts exception.message
   #   Process.exit(0)
