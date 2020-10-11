@@ -47,12 +47,12 @@ When("user search and buy the products") do
 
   $driver.manage.timeouts.implicit_wait = 10
   # verify title của sản phâm khi tìm kiếm và sau khi thêm vào giỏ hàng, nếu sai testcase sẽ dừng lại
-  begin
-    expect($driver.find_element(css: "h1.title").text).to include($product_title)
-  rescue => exception
-    puts exception.message
-    Process.exit(0)
-  end
+  # begin
+  expect($driver.find_element(css: "h1.title").text).to include("sdkasdhauksda")
+  # rescue => exception
+  #   puts exception.message
+  #   Process.exit(0)
+  # end
 
   # làm rỗng field để thêm giá trị
   $driver.find_element(css: "input.input").send_keys :backspace
@@ -75,10 +75,10 @@ Then("user check the products at cart") do
   total = $driver.find_element(css: ".prices__total").text.delete("(Đã bao gồm VAT nếu có)").delete(".").delete("đ").delete("Thành tiền")
 
   # lấy giá sản phẩm nhân với số sản phẩm, nếu khác với tống thanh toán sẽ báo lỗi và dừng testcase
-  begin
-    expect($product_number.to_i * cost.to_i).to eq(total.to_i)
-  rescue => exception
-    puts exception.message
-    Process.exit(0)
-  end
+  # begin
+  expect($product_number.to_i * cost.to_i).to eq(total.to_i)
+  # rescue => exception
+  #   puts exception.message
+  #   Process.exit(0)
+  # end
 end
