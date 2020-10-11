@@ -9,7 +9,7 @@ When("user search and buy the products") do
   # tìm kiếm apple
   $driver.find_element(css: ".eUnWAD").send_keys "apple", :enter
 
-  sleep 3
+  sleep 5
   # Chọn checkbox tikinow
   $driver.find_element(:css, "label.is-tikinow:nth-child(2)").click
 
@@ -17,7 +17,6 @@ When("user search and buy the products") do
   $driver.find_element(css: ".apply-btn").click
 
   # tìm element của các selectlist bằng find_elements
-  # $driver.manage.timeouts.implicit_wait = 5
   options = $driver.find_elements(css: "select.form-control")
 
   # Chọn thành phố
