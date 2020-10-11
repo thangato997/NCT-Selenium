@@ -1,25 +1,23 @@
-# số sản phẩm
-$product_number = "2"
-
 Given("user go to tiki page") do
   $driver.manage.window.maximize
   $driver.get "http://tiki.vn/"
 end
 
 When("user search and buy the products") do
+  # số sản phẩm
+  $product_number = "2"
   # tìm kiếm apple
   $driver.find_element(css: ".eUnWAD").send_keys "apple", :enter
 
-  $driver.manage.timeouts.implicit_wait = 5
+  sleep 3
   # Chọn checkbox tikinow
-  $driver.find_element(:css, "input[data-parram='support_p2h_delivery']").click
+  $driver.find_element(:css, "label.is-tikinow:nth-child(2)").click
 
   # xác nhận popup
-  sleep 0.5
   $driver.find_element(css: ".apply-btn").click
 
   # tìm element của các selectlist bằng find_elements
-  $driver.manage.timeouts.implicit_wait = 5
+  # $driver.manage.timeouts.implicit_wait = 5
   options = $driver.find_elements(css: "select.form-control")
 
   # Chọn thành phố
@@ -40,9 +38,6 @@ When("user search and buy the products") do
   # Click xác nhận
   $driver.find_element(css: ".apply-btn").click
 
-  # không hiểu tại sao nhưng mà phải refresh lại mới bắt được element
-  $driver.navigate.refresh
-
   sleep 1
   # tìm tất cả các sản phảm được hiển thị trên site bằng find_elements thông qua title của sản phẩm
   products = $driver.find_elements(css: "p.title")
@@ -60,10 +55,8 @@ When("user search and buy the products") do
     Process.exit(0)
   end
 
-  $driver.manage.timeouts.implicit_wait = 5
   # làm rỗng field để thêm giá trị
   $driver.find_element(css: "input.input").send_keys :backspace
-  $driver.manage.timeouts.implicit_wait = 5
   # thêm số sản phẩm
   $driver.find_element(css: "input.input").send_keys $product_number
   # thêm vào giỏ hàng

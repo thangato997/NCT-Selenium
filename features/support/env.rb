@@ -6,7 +6,6 @@ require "selenium-webdriver"
 # require "webdrivers"
 require "itms_automation"
 
-$main_browser = :firefox
 $browser_type = ENV["BROWSER"] || "firefox"
 $platform = ENV["PLATFORM"] || "desktop"
 $os_version = ENV["OS_VERSION"]
@@ -99,7 +98,7 @@ else # else create driver instance for desktop browser
           Selenium::WebDriver.for(:remote, :url => ENV["SERVER_URL"], :desired_capabilities => caps)
         end
       else
-        Selenium::WebDriver.for($main_browser)
+        Selenium::WebDriver.for(:firefox)
       end
     $driver.manage().window().maximize()
   rescue Exception => e
